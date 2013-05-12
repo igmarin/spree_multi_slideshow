@@ -33,7 +33,7 @@ module Spree
     include Spree::Core::S3Support
     supports_s3 :attachment
 
-    Spree::Slide.attachment_definitions[:attachment][:styles] = ActiveSupport::JSON.decode(Spree::Config[:slide_styles])
+    Spree::Image.attachment_definitions[:attachment][:styles] = ActiveSupport::JSON.decode(Spree::Config[:slide_styles]).symbolize_keys!
     Spree::Slide.attachment_definitions[:attachment][:path] = Spree::Config[:slide_path]
     Spree::Slide.attachment_definitions[:attachment][:url] = Spree::Config[:slide_url]
     Spree::Slide.attachment_definitions[:attachment][:default_url] = Spree::Config[:slide_default_url]
